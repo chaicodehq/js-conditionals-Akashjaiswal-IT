@@ -7,11 +7,11 @@
  * to their score — but the final score can never go above 100.
  *
  * Grading Scale:
- *   - 90–100 → "A"
- *   - 80–89  → "B"
- *   - 70–79  → "C"
- *   - 60–69  → "D"
- *   - 0–59   → "F"
+ *   - 90-100 → "A"
+ *   - 80-89  → "B"
+ *   - 70-79  → "C"
+ *   - 60-69  → "D"
+ *   - 0-59   → "F"
  *
  * Rules:
  *   - Check validity FIRST: if the original score is less than 0
@@ -25,5 +25,14 @@
  * @returns {string} The letter grade or "INVALID"
  */
 export function calculateGrade(score, hasExtraCredit) {
-  // Your code here
+  var bonus = 0;
+  if(hasExtraCredit) bonus = 5;
+  if(score < 0 || score > 100) return "INVALID";
+  if(score + bonus > 100) score = 100;
+  else score = score + bonus;
+  if(score < 60) return "F";
+  else if(score < 70) return "D";
+  else if(score < 80) return "C";
+  else if(score < 90) return "B";
+  else return "A";
 }

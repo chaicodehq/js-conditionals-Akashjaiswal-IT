@@ -26,12 +26,16 @@
  *   - car, 1 hour     → $5
  *   - car, 3 hours    → $5 + $3 + $3 = $11
  *   - car, 0.5 hours  → rounds up to 1 hour → $5
- *   - car, 24 hours   → $5 + 23×$3 = $74 → capped at $30
+ *   - car, 24 hours   → $5 + 23x$3 = $74 → capped at $30
  *
  * @param {number} hours - Number of hours parked
  * @param {string} vehicleType - "car", "motorcycle", or "bus"
  * @returns {number} Parking fee or -1 for invalid input
  */
 export function calculateParkingFee(hours, vehicleType) {
-  // Your code here
+  hours = Math.ceil(hours);
+  if(hours <= 0 || (vehicleType !== "car" && vehicleType !== "motorcycle" && vehicleType !== "bus")) return -1;
+  if(vehicleType == "car") return Math.min(30, 5 + (hours-1) * 3);
+  else if(vehicleType == "motorcycle") return Math.min(18, 3 + (hours-1) * 2);
+  return Math.min(60, 10 + (hours-1) * 7);
 }

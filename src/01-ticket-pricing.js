@@ -6,9 +6,9 @@
  * with the pricing rules scribbled on it:
  *
  * Age Groups:
- *   - Children (0–12): $8
- *   - Teens (13–17): $12
- *   - Adults (18–59): $15
+ *   - Children (0 - 12): $8
+ *   - Teens (13 - 17): $12
+ *   - Adults (18 - 59): $15
  *   - Seniors (60+): $10
  *
  * Weekend Surcharge:
@@ -23,5 +23,21 @@
  * @returns {number} The ticket price, or -1 for invalid input
  */
 export function getTicketPrice(age, isWeekend) {
-  // Your code here
+  var ans = 0;
+  if(isWeekend) {
+    ans = 3;
+  }
+  if(typeof age !== 'number' || age < 0) return -1;
+  if(age <= 12) {
+    return 8 + ans;
+  }
+  else if(age <= 17) {
+    return 12 + ans;
+  }
+  else if(age <= 59) {
+    return 15 + ans;
+  }
+  else {
+    return 10 + ans;
+  }
 }
