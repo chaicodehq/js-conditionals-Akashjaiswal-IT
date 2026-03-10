@@ -25,14 +25,25 @@
  * @returns {string} The letter grade or "INVALID"
  */
 export function calculateGrade(score, hasExtraCredit) {
-  var bonus = 0;
-  if(hasExtraCredit) bonus = 5;
-  if(score < 0 || score > 100) return "INVALID";
-  if(score + bonus > 100) score = 100;
-  else score = score + bonus;
-  if(score < 60) return "F";
-  else if(score < 70) return "D";
-  else if(score < 80) return "C";
-  else if(score < 90) return "B";
+  if (score < 0 || score > 100) return "INVALID";
+  let TotalCredit = score;
+  if (hasExtraCredit) TotalCredit = Math.min(TotalCredit + 5, 100);
+  if (TotalCredit < 60) return "F";
+  else if (TotalCredit < 70) return "D";
+  else if (TotalCredit < 80) return "C";
+  else if (TotalCredit < 90) return "B";
   else return "A";
 }
+
+// export function calculateGrade(score, hasExtraCredit) {
+//   var bonus = 0;
+//   if (hasExtraCredit) bonus = 5;
+//   if (score < 0 || score > 100) return "INVALID";
+//   if (score + bonus > 100) score = 100;
+//   else score = score + bonus;
+//   if (score < 60) return "F";
+//   else if (score < 70) return "D";
+//   else if (score < 80) return "C";
+//   else if (score < 90) return "B";
+//   else return "A";
+// }

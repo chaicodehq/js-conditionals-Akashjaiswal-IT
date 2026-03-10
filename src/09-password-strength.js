@@ -27,20 +27,20 @@
  */
 export function checkPasswordStrength(password) {
   if(typeof password !== 'string' || String.length <= 0) return 'weak';
-  var ans = 0;
-  for (var x of password) { 
+  let ans = 0;
+  for (let x of password) { 
     if('a' <= x && x <= 'z') {
       ans++;
       break;
     } 
   }
-  for (var x of password) { 
+  for (let x of password) { 
     if('A' <= x && x <= 'Z') {
       ans++;
       break;
     } 
   }
-  for (var x of password) { 
+  for (let x of password) { 
     if('0' <= x && x <= '9') {
       ans++;
       break;
@@ -48,9 +48,9 @@ export function checkPasswordStrength(password) {
   }
   if(password.length >= 8) ans++;
 
-  var s = "!@#$%^&*()_+-=[]{}|;:,.<>?";
-  for (var x of password) { 
-    if(s.indexOf(x) != -1) {
+  let s = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+  for (let x of password) { 
+    if(s.includes(x)) {
       ans++;
       break;
     } 
